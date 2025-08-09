@@ -13,11 +13,21 @@ struct YogaClient {
     var stretches: () async throws -> [Stretch]
 }
 
+extension DependencyValues {
+    var yogaClient: YogaClient {
+        get { self[YogaClient.self] }
+        set { self[YogaClient.self] = newValue }
+    }
+}
 //extension DependencyValues {
 //  var yogaClient: YogaClient {
 //    get { self[YogaClient.self] }
 //    set { self[YogaClient.self] = newValue }
 //  }
+//}
+
+//extension YogaClient: DependencyKey {
+//  
 //}
 
 extension YogaClient: TestDependencyKey {
@@ -42,3 +52,12 @@ extension YogaClient: DependencyKey {
         }
     )
 }
+
+//extension YogaClient: DependencyKey {
+//    static let liveValue = YogaClient(
+//        stretches: {
+//            let request = YogaRequests.getStretches
+//            return try await APIFetcher.shared.fetch(request: request, responseClass: [Stretch].self)
+//        }
+//    )
+//}

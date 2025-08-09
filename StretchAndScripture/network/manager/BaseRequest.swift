@@ -20,7 +20,7 @@ protocol BaseRequestProtocol {
 
 extension BaseRequestProtocol {
     var host: String {return kBaseURL}
-    var apiPath: String { return "/v2"}
+    var apiPath: String { return "/v1"}
     var headers: [String: String] { return [:] }
     var baseHeaders : [String:String] { return defaultHeaders }
     var requestTimeOut: Float { return 30 }
@@ -30,7 +30,7 @@ extension BaseRequestProtocol {
 
 extension BaseRequestProtocol {
     var requestURL : String {
-        return kBaseURL + apiPath + path
+        return "https://yoga-api-nzy4.onrender.com" + apiPath + path
     }
     
     var defaultHeaders: [String: String] {

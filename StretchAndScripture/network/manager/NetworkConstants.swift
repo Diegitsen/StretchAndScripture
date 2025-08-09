@@ -33,7 +33,7 @@ var kScheme: String {
 // MARK: - kHost
 var kHost: String {
     switch kAppEnvironment {
-    default: return "yoga-api-nzy4.onrender.com/v1/"
+    default: return "yoga-api-nzy4.onrender.com/"
     }
 }
 

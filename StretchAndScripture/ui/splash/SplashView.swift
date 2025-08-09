@@ -5,6 +5,9 @@
 import SwiftUI
 
 struct SplashView: View {
+    
+    @Binding var rootView: AppRootView?
+    
     var body: some View {
         VStack(spacing: 20) {
             Spacer()
@@ -21,12 +24,16 @@ struct SplashView: View {
     
         }
         .padding()
+        .onAppear {
+            Helpers.shared.wait {
+                rootView = .home
+            }
+        }
     }
 }
 
-struct SplashView_Previews: PreviewProvider {
-    static var previews: some View {
-        SplashView()
-        
-    }
-}
+//struct SplashView_Previews: PreviewProvider {
+//    static var previews: some View {
+//        SplashView(rootView: nil)
+//    }
+//}

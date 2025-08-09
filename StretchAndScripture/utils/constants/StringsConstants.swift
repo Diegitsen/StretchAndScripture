@@ -27,6 +27,9 @@ public enum Str {
   public static let loadMore = LocalizedString(table: "Localizable", lookupKey: "loadMore")
   /// News
   public static let news = LocalizedString(table: "Localizable", lookupKey: "News")
+
+    public static let stretches = LocalizedString(table: "Localizable", lookupKey: "Stretches")
+
   /// Please try different keyword
   public static let noDataDescription = LocalizedString(table: "Localizable", lookupKey: "noDataDescription")
   /// No items to display
