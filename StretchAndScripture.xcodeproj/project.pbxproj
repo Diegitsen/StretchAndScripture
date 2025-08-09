@@ -6,6 +6,11 @@
 	objectVersion = 77;
 	objects = {
 
+/* Begin PBXBuildFile section */
+		1E1388552E478C1000FA3554 /* Kingfisher in Frameworks */ = {isa = PBXBuildFile; productRef = 1E1388542E478C1000FA3554 /* Kingfisher */; };
+		1E1388582E478C4000FA3554 /* ComposableArchitecture in Frameworks */ = {isa = PBXBuildFile; productRef = 1E1388572E478C4000FA3554 /* ComposableArchitecture */; };
+/* End PBXBuildFile section */
+
 /* Begin PBXContainerItemProxy section */
 		1E1388372E4777E100FA3554 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
@@ -52,6 +57,8 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				1E1388582E478C4000FA3554 /* ComposableArchitecture in Frameworks */,
+				1E1388552E478C1000FA3554 /* Kingfisher in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -112,6 +119,8 @@
 			);
 			name = StretchAndScripture;
 			packageProductDependencies = (
+				1E1388542E478C1000FA3554 /* Kingfisher */,
+				1E1388572E478C4000FA3554 /* ComposableArchitecture */,
 			);
 			productName = StretchAndScripture;
 			productReference = 1E1388292E4777DE00FA3554 /* StretchAndScripture.app */;
@@ -195,6 +204,10 @@
 			);
 			mainGroup = 1E1388202E4777DE00FA3554;
 			minimizedProjectReferenceProxies = 1;
+			packageReferences = (
+				1E1388532E478C1000FA3554 /* XCRemoteSwiftPackageReference "Kingfisher" */,
+				1E1388562E478C3F00FA3554 /* XCRemoteSwiftPackageReference "swift-composable-architecture" */,
+			);
 			preferredProjectObjectVersion = 77;
 			productRefGroup = 1E13882A2E4777DE00FA3554 /* Products */;
 			projectDirPath = "";
@@ -558,6 +571,38 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		1E1388532E478C1000FA3554 /* XCRemoteSwiftPackageReference "Kingfisher" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/onevcat/Kingfisher.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 8.5.0;
+			};
+		};
+		1E1388562E478C3F00FA3554 /* XCRemoteSwiftPackageReference "swift-composable-architecture" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/pointfreeco/swift-composable-architecture";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 1.21.1;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		1E1388542E478C1000FA3554 /* Kingfisher */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 1E1388532E478C1000FA3554 /* XCRemoteSwiftPackageReference "Kingfisher" */;
+			productName = Kingfisher;
+		};
+		1E1388572E478C4000FA3554 /* ComposableArchitecture */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 1E1388562E478C3F00FA3554 /* XCRemoteSwiftPackageReference "swift-composable-architecture" */;
+			productName = ComposableArchitecture;
+		};
+/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = 1E1388212E4777DE00FA3554 /* Project object */;
 }
