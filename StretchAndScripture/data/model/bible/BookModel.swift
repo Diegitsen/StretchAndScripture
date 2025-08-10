@@ -20,10 +20,12 @@ struct BooksResponse: Codable, Equatable {
 struct Book: Codable, Equatable {
     let id: String?
     let name: String?
+    let chapters: Int?
 
     enum CodingKeys: String, CodingKey {
         case id
         case name
+        case chapters
     }
     
     static func == (lhs: Book, rhs: Book) -> Bool {
@@ -34,6 +36,7 @@ struct Book: Codable, Equatable {
 extension Book {
     static let mock = Self(
         id: "GEN",
-        name: "Genesis")
+        name: "Genesis",
+        chapters: 34)
     
 }

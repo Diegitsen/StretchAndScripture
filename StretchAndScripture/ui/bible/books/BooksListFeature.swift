@@ -22,24 +22,26 @@ struct BooksListFeature: Reducer, NetworkHelper {
     
     enum Action: Equatable {
         case fetchBooks
-        case booksResponse(Result<BooksResponse, ActionError>)
+        case booksResponse(Result<[Book], ActionError>)
         case didSelectBook(book: Book?)
     }
-        
+    
     func reduce(into state: inout State, action: Action) -> Effect<Action> {
         switch action {
         case .fetchBooks:
             return .run { send in
-                await send(
-                    .booksResponse(
-                        .success(
-                            try await self.client.books()
-                        )
-                    )
-                )
+                do {
+                    print("hey! start")
+                    let books = try await self.client.books()
+                    await send(.booksResponse(.success(books)))
+                } catch {
+                    print("hey! ptmmmmmm")
+                    let actionError = ActionError.decodingError
+                    await send(.booksResponse(.failure(actionError)))
+                }
             }
-        case .booksResponse(.success(let booksResponse)):
-            state.booksList = booksResponse.books
+        case .booksResponse(.success(let books)):
+            state.booksList = books
             state.viewState = .loaded
             return .none
         case .booksResponse(.failure(let error)):
