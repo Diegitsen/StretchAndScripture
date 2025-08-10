@@ -42,6 +42,10 @@ extension BaseRequestProtocol {
         return baseHeaders
     }
     
+    func requestUrlDynamic(baseUrl: String) -> String {
+        return baseUrl + path
+    }
+    
 }
 
 

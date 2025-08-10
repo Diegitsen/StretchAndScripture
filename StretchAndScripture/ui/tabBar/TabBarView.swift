@@ -22,6 +22,15 @@ struct TabBarView: View {
                 Label("home", systemImage: "house.fill")
             }
             
+            BooksListView(store: StoreOf<BooksListFeature>(
+                initialState: .init(),
+                reducer: {
+                    BooksListFeature(client: BibleClient.liveValue)
+                }))
+            .tabItem {
+                Label("books", systemImage: "book")
+            }
+            
             //gear
             SettingView()
                 .tabItem {

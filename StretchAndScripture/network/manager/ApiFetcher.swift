@@ -13,7 +13,7 @@ import Combine
 
 protocol Fetcher {
     @discardableResult
-    func fetch<ResponseType: Codable > (request: BaseRequestProtocol ,responseClass: ResponseType.Type) async throws -> ResponseType
+    func fetch<ResponseType: Codable > (baseUrl: String, request: BaseRequestProtocol ,responseClass: ResponseType.Type) async throws -> ResponseType
 }
 
 
@@ -21,13 +21,13 @@ public final class APIFetcher: Fetcher {
     static let shared = APIFetcher()
     typealias NetworkResponse = (data: Data, response: URLResponse)
 
-    func fetch<ResponseType>(request: BaseRequestProtocol, responseClass: ResponseType.Type) async throws -> ResponseType where ResponseType : Decodable, ResponseType : Encodable {
+    func fetch<ResponseType>(baseUrl: String, request: BaseRequestProtocol, responseClass: ResponseType.Type) async throws -> ResponseType where ResponseType : Decodable, ResponseType : Encodable {
         //SessionConfiguration
         let sessionConfig = URLSessionConfiguration.default
         sessionConfig.timeoutIntervalForRequest = TimeInterval(request.requestTimeOut)
         let decoder = JSONDecoder()
         //Handel URL
-        guard let url =  URL(string: request.requestURL) else { throw NetworkError.badURL("Invalid Url") }
+        guard let url =  URL(string: request.requestUrlDynamic(baseUrl: baseUrl)) else { throw NetworkError.badURL("Invalid Url") }
         //Request
         let urlRequest = generateUrlRequest(url: url, request: request)
         // response

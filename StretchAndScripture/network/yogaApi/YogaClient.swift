@@ -19,16 +19,6 @@ extension DependencyValues {
         set { self[YogaClient.self] = newValue }
     }
 }
-//extension DependencyValues {
-//  var yogaClient: YogaClient {
-//    get { self[YogaClient.self] }
-//    set { self[YogaClient.self] = newValue }
-//  }
-//}
-
-//extension YogaClient: DependencyKey {
-//  
-//}
 
 extension YogaClient: TestDependencyKey {
     static var previewValue: YogaClient {
@@ -48,16 +38,7 @@ extension YogaClient: DependencyKey {
     static let liveValue = YogaClient (
         stretches: {
             let request = YogaRequests.getStretches
-            return try await APIFetcher.shared.fetch(request: request, responseClass: [Stretch].self)
+            return try await APIFetcher.shared.fetch(baseUrl: "https://yoga-api-nzy4.onrender.com/v1", request: request, responseClass: [Stretch].self)
         }
     )
 }
-
-//extension YogaClient: DependencyKey {
-//    static let liveValue = YogaClient(
-//        stretches: {
-//            let request = YogaRequests.getStretches
-//            return try await APIFetcher.shared.fetch(request: request, responseClass: [Stretch].self)
-//        }
-//    )
-//}
